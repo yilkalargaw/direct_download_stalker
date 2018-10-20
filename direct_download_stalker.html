@@ -8,67 +8,63 @@
     <form id="frm1">
       File name:
       <fieldset id="frm11" style="border: 0px">
-	<input  type="text" name="filename" style="width: 35%"><br>
+        <input  type="text" name="filename" style="width: 35%"><br>
       </fieldset>
       File type:<br>
       <fieldset id="frm12" style="border: 0px">
         <input type="radio" name="file-type" value="videos" checked> Videos <br>
-	<input type="radio" name="file-type" value="images"> Images <br>
-	<input type="radio" name="file-type" value="books"> Books <br>
-	<input type="radio" name="file-type" value="music"> Music <br>
-	<input type="radio" name="file-type" value="other"> Other
+        <input type="radio" name="file-type" value="images"> Images <br>
+        <input type="radio" name="file-type" value="books"> Books <br>
+        <input type="radio" name="file-type" value="music"> Music <br>
+        <input type="radio" name="file-type" value="other"> Other
       </fieldset>
     </form>
     
-<button onclick="window.open(myFunction1());">Try & Find It</button>
-
+    <button onclick="window.open(myFunction1());">Try & Find It</button>
     <p id="demo"></p>
     <p id="demo2"></p>
     
     <script>
-
-      function myFunction1() {
-	  let y = document.getElementById("frm12");
-	  let text = "";
-	  let i;
-	  let text2 = "";
-	  let arr = [];
-	  let dalink = "";
-	  text += document.getElementById("frm11").elements[0].value ;
-	  // for (i = 0; i < x.length ;i++) {
-          //     text += x.elements[i].value +"<br>";
-	  // }
-	  for (i = 0; i < y.elements.length ;i++) {
-              text2 = (y.elements[i].checked)? y.elements[i].value: text2;
-	  }
-	  document.getElementById("demo").innerHTML = text + "<br>" +text2;
-	  arr.push(text2);
-	  arr.push(text);
-	  console.log(arr);
-
-	  switch(arr[0]) {
-	  case "videos":
-              dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(mkv|mp4|avi|mov|mpg|wmv) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-              break;
-	  case "books":
-              dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(MOBI|CBZ|CBR|CBC|CHM|EPUB|FB2|LIT|LRF|ODT|PDF|PRC|PDB|PML|RB|RTF|TCR|DOC|DOCX) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-              break;
-	  case "images":
-              dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(jpg|png|bmp|gif|tif|tiff|psd) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-              break;
-	  case "music":
-	      dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(mp3|wav|ac3|ogg|flac|wma|m4a) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-              break;
-
-	  case "software":
-              dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(exe|iso|tar|rar|zip|apk) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-              break;
-	  default:
-              dalink = 'https://www.google.com/search?q='+ arr[1] + encodeURI('-inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-	  }
-	  return dalink;
-      };
-      
+    function myFunction1() {
+      let y = document.getElementById("frm12");
+      let text = "";
+      let i;
+      let text2 = "";
+      let arr = [];
+      let dalink = "";
+      text += document.getElementById("frm11").elements[0].value ;
+      // for (i = 0; i < x.length ;i++) {
+    //     text += x.elements[i].value +"<br>";
+      // }
+      for (i = 0; i < y.elements.length ;i++) {
+    text2 = (y.elements[i].checked)? y.elements[i].value: text2;
+      }
+      document.getElementById("demo").innerHTML = text + "<br>" +text2;
+      arr.push(text2);
+      arr.push(text);
+      console.log(arr);
+      switch(arr[0]) {
+      case "videos":
+    dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(mkv|mp4|avi|mov|mpg|wmv) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
+    break;
+      case "books":
+    dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(MOBI|CBZ|CBR|CBC|CHM|EPUB|FB2|LIT|LRF|ODT|PDF|PRC|PDB|PML|RB|RTF|TCR|DOC|DOCX) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
+    break;
+      case "images":
+    dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(jpg|png|bmp|gif|tif|tiff|psd) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
+    break;
+      case "music":
+      dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(mp3|wav|ac3|ogg|flac|wma|m4a) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
+    break;
+      case "software":
+    dalink = 'https://www.google.com/search?q='+ arr[1] + '%2B' + encodeURI('(exe|iso|tar|rar|zip|apk) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
+    break;
+      default:
+    dalink = 'https://www.google.com/search?q='+ arr[1] + encodeURI('-inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
+      }
+      return dalink;
+    };
+    
     </script>
   </body>
 </html>
