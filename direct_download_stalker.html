@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
-    <title>direct_donwload_stalker</title>
+    <title>Direct Donwload Stalker</title>
   </head>
   <body>
-    <form id="frm1">
+    <form id="frm1" onsubmit="window.open(myFunction1());">
       File name:
       <fieldset id="frm11" style="border: 0px">
         <input  type="text" name="filename" style="width: 35%"><br>
@@ -18,9 +18,10 @@
         <input type="radio" name="file-type" value="music"> Music <br>
         <input type="radio" name="file-type" value="other"> Other
       </fieldset>
+
+      <button type="submit">Try & Find It</button>
     </form>
     
-    <button onclick="window.open(myFunction1());">Try & Find It</button>
     <p id="demo"></p>
     <p id="demo2"></p>
     
