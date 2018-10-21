@@ -14,7 +14,7 @@ step2. Open it in your browser
 
 ![DDS opened in browser](https://github.com/yilkalargaw/direct_download_stalker/blob/master/img/Screenshot_2018-10-21_08-57-52.png)
 
-step3. Write it file name you want to search for and its type
+step3. Type in the file name you want to search for and its type
 
 ![DDS opened in browser and file written](https://github.com/yilkalargaw/direct_download_stalker/blob/master/img/Screenshot_2018-10-21_08-58-41.png)
 
