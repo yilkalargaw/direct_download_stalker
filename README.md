@@ -1,4 +1,4 @@
-# direct_donwload_stalker
+# Direct Donwload Stalker(DDS)
 This program uses google advanced search terms to find direct downloads for various file types.
 
 # Instructions.
