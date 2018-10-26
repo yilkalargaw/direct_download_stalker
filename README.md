@@ -18,6 +18,6 @@ step3. Type in the file name you want to search for and its type
 
 ![DDS opened in browser and file written](https://github.com/yilkalargaw/direct_download_stalker/blob/master/img/Screenshot_2018-10-21_08-58-41.png)
 
-step4. Click on try & find it will open a new with the google search
+step4. Click on the "try & find it" and it will open a new tab with the google search
 
 ![DDS opening a new tab with the goole search](https://github.com/yilkalargaw/direct_download_stalker/blob/master/img/Screenshot_2018-10-21_09-04-32.png)
