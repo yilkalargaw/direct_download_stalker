@@ -36,12 +36,11 @@
         	  let arr = [];
         	  let dalink = "";
         	  text += document.getElementById("frm11").elements[0].value ;
-        	  // for (i = 0; i < x.length ;i++) {
-                  //     text += x.elements[i].value +"<br>";
-        	  // }
-        	  for (i = 0; i < y.elements.length ;i++) {
+
+            for (i = 0; i < y.elements.length ;i++) {
                       text2 = (y.elements[i].checked)? y.elements[i].value: text2;
         	  }
+            
         	  document.getElementById("demo").innerHTML = text + "<br>" +text2;
         	  arr.push(text2);
         	  arr.push(text);
