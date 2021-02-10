@@ -2,12 +2,14 @@
 This program uses google advanced search terms to find direct downloads for various file types.
 
 # Instructions.
-To use it all you have to do is copy direct_download_stalker.html file onto your computer and open it in your browser
+To use it all you have to do is go to the following  [github page](https://yilkalargaw.github.io/direct_download_stalker/)
+
+You can also copy index.html file onto your computer and open it in your browser.
 
 step1. Download direct_download_stalker.html
 
 ```
-wget "https://github.com/yilkalargaw/direct_download_stalker/raw/master/direct_download_stalker.html"
+wget "https://github.com/yilkalargaw/direct_download_stalker/raw/master/index.html"
 ```
 
 step2. Open it in your browser
