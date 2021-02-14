@@ -7,26 +7,45 @@
 </head>
 
 <body>
+    <h1> Direct Download Stalker </h1>
     <form id="frm1" onsubmit="window.open(myFunction1());">
         File name:
-        <fieldset id="frm11" style="border: 0px">
-            <input type="text" name="filename" style="width: 35%"><br>
+        <fieldset id="frm1-file-name" style="border: 0px">
+            <input type="text" id="text-input-file-name" name="filename" placeholder="file name to search for" style="width: 35%"><br>
         </fieldset>
         File type:<br>
-        <fieldset id="frm12" style="border: 0px">
-          <input type="radio" name="file-type" value="videos" checked> Videos <br>
-          <input type="radio" name="file-type" value="images"> Images <br>
-          <input type="radio" name="file-type" value="books"> Books <br>
-          <input type="radio" name="file-type" value="music"> Music <br>
-          <input type="radio" name="file-type" value="software"> Software <br>
-          <input type="radio" name="file-type" value="other"> Other
+        <fieldset id="frm1-file-type"  style="border: 0px">
+          <label for="checkbox-radio-option-videos">
+            <input type="radio" id="checkbox-radio-option-videos" name="file-type" value="videos" checked> Videos <br>
+          </label>
+          <label for="checkbox-radio-option-images">
+            <input type="radio" id="checkbox-radio-option-images" name="file-type" value="images"> Images <br>
+          </label>
+          <label for="checkbox-radio-option-books">
+            <input type="radio" id="checkbox-radio-option-books" name="file-type" value="books"> Books <br>
+          </label>
+          <label for="checkbox-radio-option-music">
+            <input type="radio" id="checkbox-radio-option-music" name="file-type" value="music"> Music <br>
+          </label>
+          <label for="checkbox-radio-option-software">
+            <input type="radio" id="checkbox-radio-option-software" name="file-type" value="software"> Software <br>
+          </label>
+          <label for="checkbox-radio-option-other">
+            <input type="radio" id="checkbox-radio-option-other" name="file-type" value="other"> Other
+          </label>
         </fieldset>
 
         Search Engine:<br>
-        <fieldset id="frm13" style="border: 0px">
-          <input type="radio" name="search_engine" value="Google" checked> Google <br>
-          <input type="radio" name="search_engine" value="Startpage"> Startpage <br>
-          <input type="radio" name="search_engine" value="Lukol"> Lukol <br>
+        <fieldset id="frm1-search-engine" style="border: 0px">
+          <label for="checkbox-radio-option-google">
+            <input type="radio" id="checkbox-radio-option-google" name="search_engine" value="Google" checked> Google <br>
+          </label>
+          <label for="checkbox-radio-option-startpage">
+            <input type="radio" id="checkbox-radio-option-startpage" name="search_engine" value="Startpage"> Startpage <br>
+          </label>
+          <label for="checkbox-radio-option-lukol">
+            <input type="radio" id="checkbox-radio-option-lukol" name="search_engine" value="Lukol"> Lukol <br>
+          </label>
         </fieldset>
 
         <button type="submit">Try & Find It</button>
@@ -37,8 +56,8 @@
 
     <script>
         function myFunction1() {
-                  let y = document.getElementById("frm12");
-                  let z = document.getElementById("frm13");
+                  let y = document.getElementById("frm1-file-type");
+                  let z = document.getElementById("frm1-search-engine");
                   let text = "";
                   let i;
                   let text2 = "";
@@ -46,7 +65,7 @@
                   let arr = [];
                   let dalink = "";
                   let querystring =  "";
-                  text += document.getElementById("frm11").elements[0].value ;
+                  text += document.getElementById("frm1-file-name").elements[0].value ;
 
                   for (i = 0; i < y.elements.length ;i++) {
                       text2 = (y.elements[i].checked)? y.elements[i].value: text2;
