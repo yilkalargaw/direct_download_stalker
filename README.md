@@ -14,7 +14,7 @@ wget "https://github.com/yilkalargaw/direct_download_stalker/raw/master/index.ht
 
 step2. Open it in your browser
 
-![DDS opened in browser](https://github.com/yilkalargaw/direct_download_stalker/blob/master/img/blob/ksnip_20210218-232934.png)
+![DDS opened in browser](https://github.com/yilkalargaw/direct_download_stalker/blob/master/img/ksnip_20210218-232934.png)
 
 step3. Type in the file name you want to search for and its type
 
