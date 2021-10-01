@@ -1,114 +1,434 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <title>Direct Donwload Stalker</title>
-</head>
+    <title>Direct Download Stalker</title>
+    <link rel="icon" href="./logo.ico" type="image/x-icon" />
+    <meta name="title" content="Direct Download Stalker" />
+    <meta
+      name="description"
+      content="This program uses google advanced search terms to find direct downloads for various file types."
+    />
+    <meta
+      name="keywords"
+      content="DDS, Direct Download Stalker, google search"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="yilkalargaw, neeraj15022001" />
 
-<body>
-    <h1> Direct Download Stalker </h1>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      :root {
+        --theme-blue: #7dccfc;
+        --theme-light-blue: #dcf2ff;
+        --theme-grey: #b5b5b5;
+      }
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100vh;
+        background-color: white;
+        z-index: 10;
+        display: none;
+        place-items: center;
+      }
+      .preloader > p {
+        text-align: center;
+        font-size: 2rem;
+        text-transform: capitalize;
+        animation: 1s pulse infinite ease-in-out;
+      }
+      .preloader-highlight {
+        color: var(--theme-blue);
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(0.8, 0.8);
+        }
+        50% {
+          transform: scale(1, 1);
+        }
+        100% {
+          transform: scale(0.8, 0.8);
+        }
+      }
+    </style>
+    <style>
+      /* Form Container */
+      .main-container {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-items: center;
+        background-color: var(--theme-light-blue);
+      }
+      .form-container {
+        width: 100%;
+        height: 100%;
+        background-color: var(--theme-light-blue);
+        padding: 30px;
+        overflow: auto;
+      }
+      .form-container::-webkit-scrollbar-thumb {
+        width: 8px;
+        background: var(--theme-blue);
+        border-radius: 20px;
+      }
+      /* Branding */
+      .branding {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .branding-image {
+        width: 100px;
+        transition: 0.3s ease-out;
+      }
+      .branding-title {
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--theme-grey);
+        padding: 8px 0;
+        transition: 0.3s ease-out;
+      }
+      .branding-title > span {
+        color: var(--theme-blue);
+      }
+      /* Form */
+      #text-input-file-name {
+        width: 100% !important;
+        border: none;
+        outline: none;
+        padding: 18px;
+        border-radius: 30px;
+      }
+      #frm1 fieldset {
+        border: 0px !important;
+      }
+      .form-submit-button {
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 8px 0;
+        font-size: 1.2rem;
+        background-color: var(--theme-blue);
+        color: white;
+        font-weight: 700;
+        border-radius: 20px;
+      }
 
-    <form id="frm1" onsubmit="window.open(myFunction1());"> File name: <br>
+      /* Form Cards */
+      .cards-container {
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+      .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 8px 0;
+        flex: 1 1 auto;
+        transition: 0.3s ease-out;
+      }
+      .card-heading {
+        color: var(--theme-blue);
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+      .card input[type="radio"] {
+        display: none;
+      }
+      .card input[type="radio"] + *::before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0.8rem;
+        height: 0.8rem;
+        margin: 0.5rem 0.3rem;
+        border-radius: 50%;
+        border: 0.1rem solid var(--theme-grey);
+        transition: 0.3s ease-in-out;
+      }
+      .card input[type="radio"]:checked + *::before {
+        background: var(--theme-blue);
+        border-color: var(--theme-blue);
+      }
+      .card input[type="radio"]:checked + * {
+        color: var(--theme-blue);
+        font-weight: 600;
+      }
+      @media screen and (min-width: 550px) {
+        .form-container {
+          height: auto;
+        }
+        .cards-container {
+          flex-direction: row;
+        }
+        .card {
+          margin: 0px 8px;
+        }
+        .branding-image {
+          width: 150px;
+        }
+        .branding-title {
+          font-size: 2rem;
+          padding: 16px 0;
+        }
+      }
+    </style>
+  </head>
 
-        <fieldset id="frm1-file-name" style="border: 0px">
+  <body>
+    <!-- Preloader -->
+    <div class="preloader">
+      <p><span class="preloader-highlight">direct</span> download stalker</p>
+    </div>
 
-            <input type="text" id="text-input-file-name" name="filename" placeholder="file name to search for" style="width: 35%">
-            <br> </fieldset> File type: <br>
+    <!-- Form Container -->
+    <div class="main-container">
+      <div class="form-container">
+        <!-- Branding -->
+        <div class="branding">
+          <img src="./download.png" alt="download" class="branding-image" />
+          <p class="branding-title"><span>D</span>DS</p>
+        </div>
 
-        <fieldset id="frm1-file-type" style="border: 0px">
-            <label for="checkbox-radio-option-videos">
-            <input type="radio" id="checkbox-radio-option-videos" name="file-type" value="videos" checked> Videos <br>
-          </label>
-            <label for="checkbox-radio-option-images">
-            <input type="radio" id="checkbox-radio-option-images" name="file-type" value="images"> Images <br>
-          </label>
-            <label for="checkbox-radio-option-books">
-            <input type="radio" id="checkbox-radio-option-books" name="file-type" value="books"> Books <br>
-          </label>
-            <label for="checkbox-radio-option-music">
-            <input type="radio" id="checkbox-radio-option-music" name="file-type" value="music"> Music <br>
-          </label>
-            <label for="checkbox-radio-option-software">
-            <input type="radio" id="checkbox-radio-option-software" name="file-type" value="software"> Software <br>
-          </label>
-            <label for="checkbox-radio-option-other">
-            <input type="radio" id="checkbox-radio-option-other" name="file-type" value="other"> Other <br>
-          </label>
-        </fieldset> Search Engine: <br>
+        <!-- Form -->
+        <form id="frm1" onsubmit="window.open(myFunction1());">
+          <!-- Search Field -->
+          <div class="form-field-container">
+            <input
+              type="text"
+              id="text-input-file-name"
+              name="filename"
+              placeholder="File Name To Search For"
+            />
+          </div>
 
-        <fieldset id="frm1-search-engine" style="border: 0px">
-            <label for="checkbox-radio-option-google">
-            <input type="radio" id="checkbox-radio-option-google" name="search_engine" value="Google" checked> Google <br>
-          </label>
-            <label for="checkbox-radio-option-startpage">
-            <input type="radio" id="checkbox-radio-option-startpage" name="search_engine" value="Startpage"> Startpage <br>
-          </label>
-            <label for="checkbox-radio-option-lukol">
-            <input type="radio" id="checkbox-radio-option-lukol" name="search_engine" value="Lukol"> Lukol <br>
-          </label>
-        </fieldset>
-        <button type="submit">Try & Find It</button>
-    </form>
+          <!-- Checkbox-Cards -->
+          <div class="cards-container">
+            <div class="card">
+              <p class="card-heading">file type</p>
+              <fieldset id="frm1-file-type">
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-videos"
+                    name="file-type"
+                    value="videos"
+                    checked
+                  />
+                  <label for="checkbox-radio-option-videos">Videos</label>
+                </div>
 
-    <p id="demo"></p>
-    <p id="demo2"></p>
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-images"
+                    name="file-type"
+                    value="images"
+                  />
+                  <label for="checkbox-radio-option-images">Images</label>
+                </div>
 
-    <script>
-     function myFunction1() {
-         let y = document.getElementById("frm1-file-type");
-         let z = document.getElementById("frm1-search-engine");
-         let text = "";
-         let i;
-         let text2 = "";
-         let text3 = "";
-         let arr = [];
-         let dalink = "";
-         let querystring = "";
-         text += document.getElementById("frm1-file-name").elements[0].value;
-         for(i = 0; i < y.elements.length; i++) {
-             text2 = (y.elements[i].checked) ? y.elements[i].value : text2;
-         }
-         for(i = 0; i < z.elements.length; i++) {
-             text3 = (z.elements[i].checked) ? z.elements[i].value : text3;
-         }
-         //document.getElementById("demo").innerHTML = text + "<br>" +text2;
-         arr.push(text2);
-         arr.push(text);
-         arr.push(text3);
-         console.log(arr);
-         switch(arr[2]) {
-             case "Startpage":
-                 querystring = 'https://www.startpage.com/sp/search?query='
-                 break;
-             case "Lukol":
-                 querystring = 'https://www.lukol.com/s.php?q='
-                 break;
-             default:
-                 querystring = 'https://www.google.com/search?q='
-         }
-         switch(arr[0]) {
-             case "videos":
-                 dalink = querystring + encodeURI(arr[1]) + '+%2B' + encodeURI('(mkv|mp4|avi|mov|mpg|wmv) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-                 break;
-             case "books":
-                 dalink = querystring + encodeURI(arr[1]) + '+%2B' + encodeURI('(MOBI|CBZ|CBR|CBC|CHM|EPUB|FB2|LIT|LRF|ODT|PDF|PRC|PDB|PML|RB|RTF|TCR|DOC|DOCX) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-                 break;
-             case "images":
-                 dalink = querystring + encodeURI(arr[1]) + '+%2B' + encodeURI('(jpg|png|bmp|gif|tif|tiff|psd) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-                 break;
-             case "music":
-                 dalink = querystring + encodeURI(arr[1]) + '+%2B' + encodeURI('(mp3|wav|ac3|ogg|flac|wma|m4a) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-                 break;
-             case "software":
-                 dalink = querystring + encodeURI(arr[1]) + '+%2B' + encodeURI('(exe|iso|tar|rar|zip|apk) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-                 break;
-             default:
-                 dalink = querystring + encodeURI(arr[1]) + '+' + encodeURI('-inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)')
-         }
-         return dalink;
-     };
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-books"
+                    name="file-type"
+                    value="books"
+                  />
+                  <label for="checkbox-radio-option-books">Books</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-music"
+                    name="file-type"
+                    value="music"
+                  />
+                  <label for="checkbox-radio-option-music">Music</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-software"
+                    name="file-type"
+                    value="software"
+                  />
+                  <label for="checkbox-radio-option-software">Software</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-other"
+                    name="file-type"
+                    value="other"
+                  />
+                  <label for="checkbox-radio-option-other">Other</label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="card">
+              <p class="card-heading">search engines</p>
+              <fieldset id="frm1-search-engine">
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-google"
+                    name="search_engine"
+                    value="Google"
+                    checked
+                  />
+                  <label for="checkbox-radio-option-google">Google</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-startpage"
+                    name="search_engine"
+                    value="Startpage"
+                  />
+                  <label for="checkbox-radio-option-startpage">Startpage</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="checkbox-radio-option-lukol"
+                    name="search_engine"
+                    value="Lukol"
+                  />
+                  <label for="checkbox-radio-option-lukol">Lukol</label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit-button">Find</button>
+        </form>
+
+        <p id="demo"></p>
+        <p id="demo2"></p>
+      </div>
+    </div>
+    <script defer>
+      const preloader = document.querySelector(".preloader");
+      setTimeout(() => {
+        preloader.style.display = "none";
+      }, 1500);
     </script>
-</body>
-
+    <script defer>
+      function myFunction1() {
+        let y = document.getElementById("frm1-file-type");
+        let z = document.getElementById("frm1-search-engine");
+        let text = "";
+        let i;
+        let text2 = "";
+        let text3 = "";
+        let arr = [];
+        let dalink = "";
+        let querystring = "";
+        text += document.getElementById("text-input-file-name").value;
+        for (i = 0; i < y.elements.length; i++) {
+          text2 = y.elements[i].checked ? y.elements[i].value : text2;
+        }
+        for (i = 0; i < z.elements.length; i++) {
+          text3 = z.elements[i].checked ? z.elements[i].value : text3;
+        }
+        //document.getElementById("demo").innerHTML = text + "<br>" +text2;
+        arr.push(text2);
+        arr.push(text);
+        arr.push(text3);
+        console.log(arr);
+        switch (arr[2]) {
+          case "Startpage":
+            querystring = "https://www.startpage.com/sp/search?query=";
+            break;
+          case "Lukol":
+            querystring = "https://www.lukol.com/s.php?q=";
+            break;
+          default:
+            querystring = "https://www.google.com/search?q=";
+        }
+        switch (arr[0]) {
+          case "videos":
+            dalink =
+              querystring +
+              encodeURI(arr[1]) +
+              "+%2B" +
+              encodeURI(
+                "(mkv|mp4|avi|mov|mpg|wmv) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)"
+              );
+            break;
+          case "books":
+            dalink =
+              querystring +
+              encodeURI(arr[1]) +
+              "+%2B" +
+              encodeURI(
+                "(MOBI|CBZ|CBR|CBC|CHM|EPUB|FB2|LIT|LRF|ODT|PDF|PRC|PDB|PML|RB|RTF|TCR|DOC|DOCX) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)"
+              );
+            break;
+          case "images":
+            dalink =
+              querystring +
+              encodeURI(arr[1]) +
+              "+%2B" +
+              encodeURI(
+                "(jpg|png|bmp|gif|tif|tiff|psd) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)"
+              );
+            break;
+          case "music":
+            dalink =
+              querystring +
+              encodeURI(arr[1]) +
+              "+%2B" +
+              encodeURI(
+                "(mp3|wav|ac3|ogg|flac|wma|m4a) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)"
+              );
+            break;
+          case "software":
+            dalink =
+              querystring +
+              encodeURI(arr[1]) +
+              "+%2B" +
+              encodeURI(
+                "(exe|iso|tar|rar|zip|apk) -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)"
+              );
+            break;
+          default:
+            dalink =
+              querystring +
+              encodeURI(arr[1]) +
+              "+" +
+              encodeURI(
+                "-inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)"
+              );
+        }
+        return dalink;
+      }
+    </script>
+  </body>
 </html>
