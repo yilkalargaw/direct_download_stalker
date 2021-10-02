@@ -4,13 +4,7 @@ This program uses google advanced search terms to find direct downloads for vari
 # Instructions.
 To use it all you have to do is go to the following  [github page](https://yilkalargaw.github.io/direct_download_stalker/).
 
-You can also download the index.html file in this repo to your computer and open it in your browser.
-
-step1. Download direct_download_stalker.html
-
-```
-wget "https://github.com/yilkalargaw/direct_download_stalker/raw/master/index.html"
-```
+You can also clone the repo and open index.html in your browser.
 
 step2. Open it in your browser
 
